@@ -1,0 +1,66 @@
+Acme\Bundle\BitcoinBundle\Entity\AlertData:
+    type:  entity
+    table: alert_data
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            column: email
+        phone_number:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            column: phone_number
+        buy_min:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            column: buy_min
+            
+        buy_max:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            column: buy_max
+               
+        sell_min:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            column: sell_min
+        
+        sell_max:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            column: sell_max
+        
+        status:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: status
+            
+        start_date:
+            type: datetime
+            column: start_date
+        
+        end_date:
+            type: datetime
+            column: end_date
+        
+    lifecycleCallbacks: {  }

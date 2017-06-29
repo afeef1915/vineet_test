@@ -1,0 +1,61 @@
+
+            canvas {
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+            .chart-container
+            {
+                background-color: #34383d;
+                padding:10px;
+                border: 1px solid #1c1e22;
+            }
+            .inline-block
+            {
+                display: inline-block;
+            }
+            #averageinput
+            {
+                text-align: center;
+                background: transparent;
+                border: none;
+                color: #c8c8c8;
+                border-bottom: 1px solid #fff;
+                margin-left:20px;
+            }
+            .efees
+            {
+                text-align: center;
+                background: transparent;
+                border: none;
+                color: #c8c8c8;
+                border-bottom: 1px solid #fff;
+                width: 70%;
+            }
+            .updatefeesdiv
+            {
+                width:70%;
+            }
+            .updatefees
+            {
+                width: 30px;
+                margin:auto;
+            }
+            #averageinput:focus,.efees:focus
+            {
+                outline: none;
+            }
+            #avgrates
+            {
+                border-right: 2px solid #fff;
+            }
+            .optionbutton
+            {
+                background: transparent;
+                border: none;
+                border: 1px solid #fff;
+                color: #fff;
+                width: 30px;
+                padding: 3px;
+            }            
+               

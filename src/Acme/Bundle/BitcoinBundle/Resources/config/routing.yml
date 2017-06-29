@@ -1,0 +1,21 @@
+acme_bitcoin_homepage:
+    path:     /
+    defaults: { _controller: AcmeBitcoinBundle:Default:index }
+acme_bitcoin_datatable:
+    path:     /bitcoin-datatable
+    defaults: { _controller: AcmeBitcoinBundle:Default:datatable }
+acme_bitcoin_data_api:
+    path:     /api-data
+    defaults: { _controller: AcmeBitcoinBundle:Default:ApiData }
+acme_bitcoin_alert:
+    path:     /alert
+    defaults: { _controller: AcmeBitcoinBundle:Default:Alert }
+acme_bitcoin_manage_alert:
+    path:     /maange-alert
+    defaults: { _controller: AcmeBitcoinBundle:Default:MangeAlert }
+acme_bitcoin_form_data:
+    path:     /registration-alert
+    defaults: { _controller: AcmeBitcoinBundle:Default:FormData }
+acme_bitcoin_form_update:
+    path:     /registration-update
+    defaults: { _controller: AcmeBitcoinBundle:Default:AlertCreate }
