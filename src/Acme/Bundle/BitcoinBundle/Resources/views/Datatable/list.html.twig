@@ -1,0 +1,33 @@
+{% include 'base.html.twig' %} 
+
+
+        <div class="container">
+            
+<table id="example" class="display" width="100%">
+
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Code</th>
+      <th>Region</th>
+        <th>Income Group</th>
+      <th>Lending Country</th>
+      <th>Other</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+
+  {% include 'AcmeBitcoinBundle:Bitcoin:bitcoinfooter.html.twig' %}
+
+  <script>
+jQuery(document).ready(function() {
+  jQuery('#example').dataTable({
+    'bProcessing': true,
+    'bServerSide': true,
+    'sAjaxSource': "http://localhost/vineet_test-master/web/app_dev.php/users-list-data"
+ });
+})
+  </script>

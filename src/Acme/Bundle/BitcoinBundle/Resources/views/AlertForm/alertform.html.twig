@@ -1,0 +1,38 @@
+<li><button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Alerts
+    </button>
+</li>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Alerts</h4>
+</div>
+<div class="modal-body">
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+{{ form_row(form.email) }}
+{{ form_row(form.phone_number) }}
+{{ form_row(form.buy_min) }}
+{{ form_row(form.buy_max) }}
+{{ form_row(form.sell_min) }}
+{{ form_row(form.sell_max) }}
+
+
+
+
+</div>
+<div class="modal-footer">
+    {{ form_row(form.save, { 'label': 'Submit me' }) }}
+   
+{{ form_end(form) }}
+
+
+</div>
+</div>
+</div>
+</div>    

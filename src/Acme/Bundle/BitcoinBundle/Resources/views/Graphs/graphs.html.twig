@@ -1,0 +1,447 @@
+ {#<div class="bannerdiv">
+    <center><a href="https://cryptonomos.com/wtt?r=26Q8pHOlRjMh9OqUZkhWOMqXl?utm_source=bitcoinratesin&amp;utm_campaign=bitcoinratesin&amp;&amp;utm_medium=banner" target="_blank"><img src="{{ asset ('images/banner2.gif') }}" class="img-responsive" alt="banner"></a>
+    </center>
+</div>#}
+ <!-- Buy Rates Graph-->
+            <div>
+                <form method="post">
+                    <div class="btn-group btn-group-xs pull-right" data-toggle="buttons">
+                        <label class="btn btn-primary" id="optionbuy1hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsbuy" value="1hr" autocomplete="off"> 1 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionbuy12hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsbuy" value="12hr" autocomplete="off"> 12 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionbuy24hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsbuy" value="24hr" autocomplete="off"> 24 hr
+                        </label>
+                    </div>
+                </form>
+                <form method="post">
+                    <div class="btn-group btn-group-xs pull-left" data-toggle="buttons">
+                        <label class="btn btn-primary" id="buyfeesno">
+                            <input onChange="this.form.submit();" type="radio" name="buyfees" value="no" autocomplete="off"> No fees
+                        </label>
+                        <label class="btn btn-primary" id="buyfeesyes">
+                            <input onChange="this.form.submit();" type="radio" name="buyfees" value="yes" autocomplete="off"> Fees
+                        </label>
+                    </div>
+                </form>
+            </div><br/>
+
+
+            <div class="chart-container">
+                <canvas class="charts" id="buychart"></canvas>
+            </div>
+
+            <br/><br/>
+
+            <div>
+                <form method="post">
+                    <div class="btn-group btn-group-xs pull-right" data-toggle="buttons">
+                        <label class="btn btn-primary" id="optionsell1hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionssell" value="1hr" autocomplete="off"> 1 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionsell12hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionssell" value="12hr" autocomplete="off"> 12 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionsell24hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionssell"  value="24hr" autocomplete="off"> 24 hr
+                        </label>
+                    </div>
+                </form>
+                <form method="post">
+                    <div class="btn-group btn-group-xs pull-left" data-toggle="buttons">
+                        <label class="btn btn-primary" id="sellfeesno">
+                            <input onChange="this.form.submit();" type="radio" name="sellfees" value="no" autocomplete="off"> No fees
+                        </label>
+                        <label class="btn btn-primary" id="sellfeesyes">
+                            <input onChange="this.form.submit();" type="radio" name="sellfees" value="yes" autocomplete="off"> Fees
+                        </label>
+                    </div>
+                </form>
+            </div><br/>
+            <div class="chart-container">
+                <canvas class="charts" id="sellchart"></canvas>
+            </div>
+
+            <br/><br/>
+<!-- bitcoinrates -->
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Arbitrage Opportunities [after Fees]</h4></div>
+                <div class="panel-body">
+                    <div class="list-group arbitragelist" id="arbitragefeeslist">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="btn-group btn-group-xs pull-right" data-toggle="buttons">
+                        <label class="btn btn-primary" id="optionarbitragefees1hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsar" value="1hr" autocomplete="off" > 1 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionarbitragefees12hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsar" value="12hr" autocomplete="off"> 12 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionarbitragefees24hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsar" value="24hr" autocomplete="off"> 24 hr
+                        </label>
+                    </div>
+                </form>
+            </div><br/>
+            <div class="chart-container">
+                <canvas class="charts" id="arbitragefeeschart"></canvas>
+            </div>
+
+            <br/><br/>
+<!-- bitcoinrates -->
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Arbitrage Opportunities [without Fees]</h4></div>
+                <div class="panel-body">
+                    <div class="list-group arbitragelist" id="arbitragelist">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="btn-group btn-group-xs pull-right" data-toggle="buttons">
+                        <label class="btn btn-primary" id="optionarbitrage1hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsarnofee" value="1hr" autocomplete="off" > 1 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionarbitrage12hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsarnofee" value="12hr" autocomplete="off"> 12 hr
+                        </label>
+                        <label class="btn btn-primary" id="optionarbitrage24hr">
+                            <input onChange="this.form.submit();" type="radio" name="optionsarnofee" value="24hr" autocomplete="off"> 24 hr
+                        </label>
+                    </div>
+                </form>
+            </div><br/>
+            <div class="chart-container">
+                <canvas class="charts" id="arbitragechart"></canvas>
+            </div>
+
+
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Add Exchange</h4>
+                        </div>
+                        <form method="post">
+                                                            <div class="modal-body">
+                                    <select name="add" class="form-control">
+                                         
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                            <option value="5">Pocketbits</option>
+                                                                                     
+                                                                                            <option value="6">LocalBitcoins-NB</option>
+                                                                                                                        </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </div>
+                                                    </form>
+                    </div>
+                </div>
+            </div>
+
+            <br/><br/>
+<!-- bitcoinrates -->
+<script>
+        $("#optionbuy1hr").addClass("active");
+            $("#optionsell1hr").addClass("active");
+
+            $("#buyfeesno").addClass("active");
+            $("#sellfeesno").addClass("active");
+
+            $("#optionarbitrage1hr").addClass("active");
+            $("#optionarbitragefees1hr").addClass("active");
+
+
+            var charts = {};
+
+            Chart.defaults.global.defaultFontColor = "#fff";
+            var color = Chart.helpers.color;
+            function createConfig(legendPosition, colorName, labelvalues, heading, data, minval, maxval, labelstring) {
+                return {
+                    type: 'line',
+                    data: {
+                        labels: labelvalues,
+                        datasets: data
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: heading
+                        },
+                        legend: {
+                            position: legendPosition,
+                            labels: {
+                                usePointStyle: true
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true
+                                    }
+                                }],
+                            yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: labelstring
+                                    },
+                                    ticks: {
+                                        suggestedMin: minval,
+                                        suggestedMax: maxval
+                                    }
+                                }]
+                        }
+                    }
+                };
+            }
+
+
+
+            function updatechart() {
+                [{
+                        id: 'buychart',
+                        legendPosition: 'bottom',
+                        color: '#900',
+                        labelvalues: ['-1hr', '-55m', '-50m', '-45m', '-40m', '-35m', '-30m', '-25m', '-20m', '-15m', '-10m', '-5m', '0m'],
+                        data: [],
+                        heading: 'BITCOIN BUY RATES',
+                        min: 0,
+                        max: 0,
+                        labelstring: 'Rate [Rs]'
+                    }, {
+                        id: 'sellchart',
+                        legendPosition: 'bottom',
+                        color: '#009',
+                        labelvalues: ['-1hr', '-55m', '-50m', '-45m', '-40m', '-35m', '-30m', '-25m', '-20m', '-15m', '-10m', '-5m', '0m'],
+                        data: [],
+                        heading: 'BITCOIN SELL RATES',
+                        min: 0,
+                        max: 0,
+                        labelstring: 'Rate [Rs]'
+                    }, {
+                        id: 'arbitragefeeschart',
+                        legendPosition: 'bottom',
+                        color: '#090',
+                        labelvalues: ['-1hr', '-55m', '-50m', '-45m', '-40m', '-35m', '-30m', '-25m', '-20m', '-15m', '-10m', '-5m', '0m'],
+                        data: [],
+                        heading: 'MAX ARBITRAGE PROFITS [DEFAULT FEES, ALL EXCHANGES]',
+                        min: 0,
+                        max: 0,
+                        labelstring: 'Profit [%]'
+                    }, {
+                        id: 'arbitragechart',
+                        legendPosition: 'bottom',
+                        color: '#990',
+                        labelvalues: ['-1hr', '-55m', '-50m', '-45m', '-40m', '-35m', '-30m', '-25m', '-20m', '-15m', '-10m', '-5m', '0m'],
+                        data: [],
+                        heading: 'MAX ARBITRAGE PROFITS [WITHOUT FEES, ALL EXCHANGES]',
+                        min: 0,
+                        max: 0,
+                        labelstring: 'Profit [%]'
+                    }].forEach(function (details) {
+                    var ctx = document.getElementById(details.id).getContext('2d');
+                    var config = createConfig(details.legendPosition, details.color, details.labelvalues, details.heading, details.data, details.min, details.max, details.labelstring);
+                    var cid = details.id;
+                    charts[cid] = new Chart(ctx, config);
+                })
+            }
+            ;
+            updatechart();
+
+            function updatedata()
+            {
+                var minbuyid;
+                var maxsellid;
+                var minbuyidfees;
+                var maxsellidfees;
+                var minbuy;
+                var minbuyfees;
+                var maxsell;
+                var maxsellfees;
+                $.getJSON(root_url+"api-data", function (result) {
+               // $.getJSON( "https://crossorigin.me/http://www.bitcoinrates.in/getdata.php", { method: "GET" } )
+  //.done(function( result ) {
+                    $.each(result.rates, function (id, val) {
+                        if (minbuy == null || minbuy > val.buyrate) {
+                            minbuy = val.buyrate;
+                            minbuyid = id;
+                        }
+
+                        if (minbuyfees == null || minbuyfees > val.buyratefees) {
+                            minbuyfees = val.buyratefees;
+                            minbuyidfees = id;
+                        }
+
+                        if (maxsell == null || maxsell < val.sellrate) {
+                            maxsell = val.sellrate;
+                            maxsellid = id;
+                        }
+
+                        if (maxsellfees == null || maxsellfees < val.sellratefees) {
+                            maxsellfees = val.sellratefees;
+                            maxsellidfees = id;
+                        }
+
+                        $('#' + id + '_buyrate').text(val.buyrate);
+                        $('#' + id + '_buyvolume').text("(" + val.buyvolume + ")");
+                        $('#' + id + '_sellrate').text(val.sellrate);
+                        $('#' + id + '_sellvolume').text("(" + val.sellvolume + ")");
+                        $('#' + id + '_buyratefees').text(val.buyratefees);
+                        $('#' + id + '_buyvolumefees').text("(" + val.buyvolume + ")");
+                        $('#' + id + '_sellratefees').text(val.sellratefees);
+                        $('#' + id + '_sellvolumefees').text("(" + val.sellvolume + ")");
+                        $('#' + id + '_time').text("(" + val.time + ")");
+                    });
+
+                    $('#arbitragelist').html('');
+                    $.each(result.arbopp, function (id, val) {
+                        var m = '<a href="#" class="list-group-item"><p class="list-group-item-text">';
+                        m = m + "Profit " + val.profit + "% : Buy at " + val.buyat + " for Rs." + val.buyrate + " and sell at " + val.sellat + " for Rs." + val.sellrate;
+                        m = m + '</p></a>';
+                        $('#arbitragelist').html($('#arbitragelist').html() + m);
+                    });
+
+                    $('#arbitragefeeslist').html('');
+                    $.each(result.arboppfees, function (id, val) {
+                        var m = '<a href="#" class="list-group-item"><p class="list-group-item-text">';
+                        m = m + "Profit " + val.profit + "% : Buy at " + val.buyat + " for Rs." + val.buyrate + " and sell at " + val.sellat + " for Rs." + val.sellrate;
+                        m = m + '</p></a>';
+                        $('#arbitragefeeslist').html($('#arbitragefeeslist').html() + m);
+                    });
+
+
+                    updateaverage();
+                    $('td').removeClass('success');
+                    $('#' + minbuyid + '_buyraterow').addClass('success');
+                    $('#' + maxsellid + '_sellraterow').addClass('success');
+                    $('#' + minbuyidfees + '_buyratefeesrow').addClass('success');
+                    $('#' + maxsellidfees + '_sellratefeesrow').addClass('success');
+                    charts['buychart'].options.scales.yAxes[0].ticks.suggestedMax = result.graph.maxbuygraph;
+                    charts['buychart'].options.scales.yAxes[0].ticks.suggestedMin = result.graph.minbuygraph;
+                    charts['buychart'].data.datasets = result.graph.buygraphdata;
+                    charts['buychart'].update();
+
+                    charts['sellchart'].options.scales.yAxes[0].ticks.suggestedMax = result.graph.maxsellgraph;
+                    charts['sellchart'].options.scales.yAxes[0].ticks.suggestedMin = result.graph.minsellgraph;
+                    charts['sellchart'].data.datasets = result.graph.sellgraphdata;
+                    charts['sellchart'].update();
+
+                    charts['arbitragefeeschart'].options.scales.yAxes[0].ticks.suggestedMax = result.graph.maxarbitragefeesgraph;
+                    charts['arbitragefeeschart'].options.scales.yAxes[0].ticks.suggestedMin = result.graph.minarbitragefeesgraph;
+                    charts['arbitragefeeschart'].data.datasets = result.graph.arbitragefeesgraphdata;
+                    charts['arbitragefeeschart'].update();
+
+                    charts['arbitragechart'].options.scales.yAxes[0].ticks.suggestedMax = result.graph.maxarbitragegraph;
+                    charts['arbitragechart'].options.scales.yAxes[0].ticks.suggestedMin = result.graph.minarbitragegraph;
+                    charts['arbitragechart'].data.datasets = result.graph.arbitragegraphdata;
+                    charts['arbitragechart'].update();
+
+                });
+                setTimeout(updatedata, 60000);
+            }
+            updatedata();
+
+
+            $(".charts").mouseover(function (e) {
+                var cid = $(this).attr('id');
+
+                for (var i = 0; i < charts[cid].data.datasets.length; i++)
+                {
+                    charts[cid].data.datasets[i].pointRadius = charts[cid].data.datasets[i].pointmouseoverradius;
+                }
+                charts[cid].update();
+            });
+
+            $(".charts").mouseout(function (e) {
+                var cid = $(this).attr('id');
+                for (var i = 0; i < charts[cid].data.datasets.length; i++)
+                {
+                    charts[cid].data.datasets[i].pointRadius = charts[cid].data.datasets[i].pointmouseoutradius;
+                }
+                charts[cid].update();
+            });
+
+
+
+            function updateaverage()
+            {
+                var btcamt = parseFloat($('#averageinput').val());
+                var buyratesum = 0;
+                var sellratesum = 0;
+                var buyratefeessum = 0;
+                var sellratefeessum = 0;
+                var k;
+                k = 0;
+                $(".buyrate").each(function () {
+                    buyratesum = buyratesum + parseFloat($(this).text());
+                    k++;
+                });
+                $('#buyrateavg').text(k == 0 ? 0 : (btcamt * buyratesum / k).toFixed(2));
+                k = 0;
+                $(".buyratefees").each(function () {
+                    buyratefeessum = buyratefeessum + parseFloat($(this).text());
+                    k++;
+                });
+                $('#buyratefeesavg').text(k == 0 ? 0 : (btcamt * buyratefeessum / k).toFixed(2));
+                k = 0;
+                $(".sellrate").each(function () {
+                    sellratesum = sellratesum + parseFloat($(this).text());
+                    k++;
+                });
+                $('#sellrateavg').text(k == 0 ? 0 : (btcamt * sellratesum / k).toFixed(2));
+                k = 0;
+                $(".sellratefees").each(function () {
+                    sellratefeessum = sellratefeessum + parseFloat($(this).text());
+                    k++;
+                });
+                $('#sellratefeesavg').text(k == 0 ? 0 : (btcamt * sellratefeessum / k).toFixed(2));
+            }
+
+            $("#averageinput").on("propertychange change keyup paste input", function () {
+                updateaverage();
+            });
+            $(".efees").on("paste input", function () {
+                var newfees = $(this).val();
+                if (isNumeric(newfees))
+                {
+                    var id = $(this).attr("name");
+                    $('#' + id + '_updatefees').removeClass('hide');
+                }
+
+            });
+            function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            $('.arbitragelist').on('click', '.list-group-item', function (event) {
+                event.preventDefault();
+            });
+
+
+</script>

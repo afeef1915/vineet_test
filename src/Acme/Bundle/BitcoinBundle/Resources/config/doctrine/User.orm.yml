@@ -1,0 +1,9 @@
+# src/AcmeBitcoinBundle/Resources/config/doctrine/User.orm.yml
+Acme\Bundle\BitcoinBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

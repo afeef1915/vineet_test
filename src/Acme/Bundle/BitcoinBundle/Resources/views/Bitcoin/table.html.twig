@@ -1,0 +1,131 @@
+{% include 'base.html.twig' %} 
+{% include 'AcmeBitcoinBundle:Bitcoin:bitcoinheader.html.twig' %}
+
+{#<div class="bannerdiv">
+    <center><a href="https://www.unocoin.com/coupons?couponcode=RATES200&amp;utm_source=bitcoinrates.in&amp;utm_medium=banner&amp;utm_campaign=netki" target="_blank"><img src="{{ asset ('images/banner1.gif') }}" class="img-responsive" alt="banner"></a>    </center>
+</div>#}
+     <table class="table table-striped table-hover" style="border:2px #fff solid;margin-bottom: 20px;">
+                <tbody>
+                    <tr><th id="avgrates">Average Rates</th><td><input type="text" id="averageinput" value="1.00000000"></td><td>Buy rate: <span id="buyrateavg"></span></td><td>Sell rate: <span id="sellrateavg"></span></td><td>Buy rate+Fees: <span id="buyratefeesavg"></span></td><td>Sell rate-Fees: <span id="sellratefeesavg"></span></td></tr>
+                </tbody>
+            </table>
+
+            <table class="table table-striped table-hover " style="border:1px solid">
+                <thead>
+                    <tr>
+                        <th>Exchange Name<br><small>(Update Time)</small></th>
+                        <th>Buy Rate(Rs.)<br><small>(Max Vol in Btc)</small></th>
+                        <th>Sell Rate(Rs.)<br><small>(Max Vol in Btc)</small></th>                 
+                        <th>Fees</th>
+                        <th>Buy Rate(Rs.)+Fees<br><small>(Max Vol in Btc)</small></th>
+                        <th>Sell Rate(Rs.)-Fees<br><small>(Max Vol in Btc)</small></th>
+                        <th><button  class="optionbutton" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus"></span></button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="https://coinsecure.in/signup/IyV2CEOpdGxLSmLlaEPP" target="_blank">Coinsecure</a><br><small id="1_time"></small></td>
+                            <td id="1_buyraterow"><span class="buyrate" id="1_buyrate"></span><br><small id="1_buyvolume"></small></td>
+                            <td id="1_sellraterow"><span class="sellrate" id="1_sellrate"></span><br><small id="1_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="1"><input class="efees" name="1" type="text" value="0.30">%<div class="text-center updatefeesdiv"><button name="updatefees" id="1_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="1_buyratefeesrow"><span class="buyratefees" id="1_buyratefees"></span><br><small id="1_buyvolumefees"></small></td>
+                            <td id="1_sellratefeesrow"><span  class="sellratefees" id="1_sellratefees"></span><br><small id="1_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="1" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='1'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="https://localbitcoins.com/?ch=3v73" target="_blank">Localbitcoins</a><br><small id="2_time"></small></td>
+                            <td id="2_buyraterow"><span class="buyrate" id="2_buyrate"></span><br><small id="2_buyvolume"></small></td>
+                            <td id="2_sellraterow"><span class="sellrate" id="2_sellrate"></span><br><small id="2_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="2"><input class="efees" name="2" type="text" value="0.00">%<div class="text-center updatefeesdiv"><button name="updatefees" id="2_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="2_buyratefeesrow"><span class="buyratefees" id="2_buyratefees"></span><br><small id="2_buyvolumefees"></small></td>
+                            <td id="2_sellratefeesrow"><span  class="sellratefees" id="2_sellratefees"></span><br><small id="2_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="2" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='2'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="https://www.unocoin.com/?referrerid=8984" target="_blank">Unocoin</a><br><small id="3_time"></small></td>
+                            <td id="3_buyraterow"><span class="buyrate" id="3_buyrate"></span><br><small id="3_buyvolume"></small></td>
+                            <td id="3_sellraterow"><span class="sellrate" id="3_sellrate"></span><br><small id="3_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="3"><input class="efees" name="3" type="text" value="1.15">%<div class="text-center updatefeesdiv"><button name="updatefees" id="3_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="3_buyratefeesrow"><span class="buyratefees" id="3_buyratefees"></span><br><small id="3_buyvolumefees"></small></td>
+                            <td id="3_sellratefeesrow"><span  class="sellratefees" id="3_sellratefees"></span><br><small id="3_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="3" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='3'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="http://link.zebpay.com/ref/REFAMOD3463" target="_blank">Zebpay</a><br><small id="4_time"></small></td>
+                            <td id="4_buyraterow"><span class="buyrate" id="4_buyrate"></span><br><small id="4_buyvolume"></small></td>
+                            <td id="4_sellraterow"><span class="sellrate" id="4_sellrate"></span><br><small id="4_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="4"><input class="efees" name="4" type="text" value="0.00">%<div class="text-center updatefeesdiv"><button name="updatefees" id="4_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="4_buyratefeesrow"><span class="buyratefees" id="4_buyratefees"></span><br><small id="4_buyvolumefees"></small></td>
+                            <td id="4_sellratefeesrow"><span  class="sellratefees" id="4_sellratefees"></span><br><small id="4_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="4" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='4'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="https://paxful.com/buy-bitcoin/with-any-payment-method/INR?fiat-min=0&affiliate=gKmdADbaQVA" target="_blank">Paxful</a><br><small id="10_time"></small></td>
+                            <td id="10_buyraterow"><span class="buyrate" id="10_buyrate"></span><br><small id="10_buyvolume"></small></td>
+                            <td id="10_sellraterow"><span class="sellrate" id="10_sellrate"></span><br><small id="10_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="10"><input class="efees" name="10" type="text" value="0.00">%<div class="text-center updatefeesdiv"><button name="updatefees" id="10_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="10_buyratefeesrow"><span class="buyratefees" id="10_buyratefees"></span><br><small id="10_buyvolumefees"></small></td>
+                            <td id="10_sellratefeesrow"><span  class="sellratefees" id="10_sellratefees"></span><br><small id="10_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="10" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='10'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="http://www.bitxoxo.com/" target="_blank">Bitxoxo</a><br><small id="7_time"></small></td>
+                            <td id="7_buyraterow"><span class="buyrate" id="7_buyrate"></span><br><small id="7_buyvolume"></small></td>
+                            <td id="7_sellraterow"><span class="sellrate" id="7_sellrate"></span><br><small id="7_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="7"><input class="efees" name="7" type="text" value="0.00">%<div class="text-center updatefeesdiv"><button name="updatefees" id="7_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="7_buyratefeesrow"><span class="buyratefees" id="7_buyratefees"></span><br><small id="7_buyvolumefees"></small></td>
+                            <td id="7_sellratefeesrow"><span  class="sellratefees" id="7_sellratefees"></span><br><small id="7_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="7" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='7'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="https://www.bitlio.com/?inviter_code=8220143765" target="_blank">Bitlio</a><br><small id="9_time"></small></td>
+                            <td id="9_buyraterow"><span class="buyrate" id="9_buyrate"></span><br><small id="9_buyvolume"></small></td>
+                            <td id="9_sellraterow"><span class="sellrate" id="9_sellrate"></span><br><small id="9_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="9"><input class="efees" name="9" type="text" value="1.00">%<div class="text-center updatefeesdiv"><button name="updatefees" id="9_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="9_buyratefeesrow"><span class="buyratefees" id="9_buyratefees"></span><br><small id="9_buyvolumefees"></small></td>
+                            <td id="9_sellratefeesrow"><span  class="sellratefees" id="9_sellratefees"></span><br><small id="9_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="9" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='9'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                                        
+                        <tr class="exchange_row">
+                            <td><a href="https://india-exchange.belfrics.com/en" target="_blank">Belfrics</a><br><small id="11_time"></small></td>
+                            <td id="11_buyraterow"><span class="buyrate" id="11_buyrate"></span><br><small id="11_buyvolume"></small></td>
+                            <td id="11_sellraterow"><span class="sellrate" id="11_sellrate"></span><br><small id="11_sellvolume"></small></td>
+                            <td class="col-md-1"><form method="post"><input type="hidden" name="ex_id" value="11"><input class="efees" name="11" type="text" value="1.00">%<div class="text-center updatefeesdiv"><button name="updatefees" id="11_updatefees" class="optionbutton hide updatefees" type="submit"><span class="glyphicon glyphicon-ok"></span></button></div></form></td>
+                            <td id="11_buyratefeesrow"><span class="buyratefees" id="11_buyratefees"></span><br><small id="11_buyvolumefees"></small></td>
+                            <td id="11_sellratefeesrow"><span  class="sellratefees" id="11_sellratefees"></span><br><small id="11_sellvolumefees"></small></td>
+                            <td><form class="inline-block" method="post"><button name="remove" value="11" class="optionbutton remove_exchange"><span class="glyphicon glyphicon-trash"></span></button></form>
+                                <form class="inline-block" method="get" action='exchange.php'><input type='hidden' name='id' value='11'><button class="optionbutton remove_exchange"><span class="glyphicon glyphicon-new-window"></span></button></form>
+                            </td>
+                        </tr>
+                    
+
+                </tbody>
+            </table>
+
+            <br/>
+
+
+{% include 'AcmeBitcoinBundle:Graphs:graphs.html.twig' %} 
+{% include 'AcmeBitcoinBundle:Bitcoin:bitcoinfooter.html.twig' %} 
