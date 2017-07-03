@@ -136,4 +136,54 @@ class DefaultController extends Controller {
         }
     }
 
+    public function ListUsersAction() {
+        return $this->render('AcmeBitcoinBundle:Datatable:list.html.twig');
+    }
+
+    public function ListUsersDataAction() {
+        $result = $this->getDoctrine()->getManager();
+        $person_data = $result->createQueryBuilder()
+                ->select('u.id,u.email, u.phone_number,u.buy_min,u.buy_max,u.sell_min,u.sell_max,u.status,u.start_date,u.end_date')
+                ->from('AcmeBitcoinBundle:AlertData', 'u')
+                ->orderBy('u.id', 'asc')
+        ;
+        //$sql=$results->getQuery();
+        //echo   $sql->getSql();
+        $data = $person_data->getQuery()->getResult();
+        
+        $json = '[';
+        $first = 0;
+        foreach ($data as $v) {
+          
+//            $start_date=
+//                    $end_date=
+            if ($first++)
+                $json .= ',';
+            
+            $json .= '["' . $v['id'] . '",
+        "' . $v['email'] . '",
+       
+        "' . $v['phone_number'] . '",
+            "' . $v['buy_min'] . '",
+                "' . $v['buy_max'] . '",
+            "' . $v['sell_min'] . '",
+                "' . $v['sell_max'] . '",
+            "' . $v['status'] . '",
+                "' . $v['start_date']->format('d-M-Y') . '",
+            "' . $v['end_date']->format('d-M-Y'). '"]';
+        }
+        $json .= ']';
+//        $response = json_decode($json, true);
+//       $json_data=json_encode($response);
+
+        return $this->render('AcmeBitcoinBundle:Datatable:list.html.twig', array(
+                    'json_data' => $json
+        ));
+    }
+   
+
+
+
+
+
 }

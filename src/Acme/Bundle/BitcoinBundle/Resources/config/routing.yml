@@ -19,3 +19,16 @@ acme_bitcoin_form_data:
 acme_bitcoin_form_update:
     path:     /registration-update
     defaults: { _controller: AcmeBitcoinBundle:Default:AlertCreate }
+acme_bitcoin_list_data:
+    path:    /users-list
+    defaults: { _controller: AcmeBitcoinBundle:Default:ListUsers }
+acme_bitcoin_list_data_all:
+    path:    /users-list-data
+    defaults: { _controller: AcmeBitcoinBundle:Default:ListUsersData }
+acme_bitcoin_localbitcoin_rates_buy:
+    path:    /bitcoin-rates-buy
+    defaults: { _controller: AcmeBitcoinBundle:BitCoinApi:LocalBitcoinBuy }
+acme_bitcoin_localbitcoin_rates_sell:
+    path:    /bitcoin-rates-sell
+    defaults: { _controller: AcmeBitcoinBundle:BitCoinApi:LocalBitcoinSell }
+    

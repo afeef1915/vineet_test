@@ -284,9 +284,9 @@
                 var minbuyfees;
                 var maxsell;
                 var maxsellfees;
-                $.getJSON(root_url+"api-data", function (result) {
-               // $.getJSON( "https://crossorigin.me/http://www.bitcoinrates.in/getdata.php", { method: "GET" } )
-  //.done(function( result ) {
+                //$.getJSON(root_url+"api-data", function (result) {
+                $.getJSON( "https://crossorigin.me/http://www.bitcoinrates.in/getdata.php", { method: "GET" } )
+                    .done(function( result ) {
                     $.each(result.rates, function (id, val) {
                         if (minbuy == null || minbuy > val.buyrate) {
                             minbuy = val.buyrate;
