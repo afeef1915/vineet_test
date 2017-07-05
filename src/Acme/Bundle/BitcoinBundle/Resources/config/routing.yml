@@ -31,4 +31,7 @@ acme_bitcoin_localbitcoin_rates_buy:
 acme_bitcoin_localbitcoin_rates_sell:
     path:    /bitcoin-rates-sell
     defaults: { _controller: AcmeBitcoinBundle:BitCoinApi:LocalBitcoinSell }
+acme_bitcoin_send_sms:
+    path:    /send_sms
+    defaults: { _controller: AcmeBitcoinBundle:Default:SendSms }
     

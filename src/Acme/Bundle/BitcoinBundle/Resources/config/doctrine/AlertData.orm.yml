@@ -63,4 +63,12 @@ Acme\Bundle\BitcoinBundle\Entity\AlertData:
             type: datetime
             column: end_date
         
+        bitcoin_rates:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            column: bitcoin_rates
+            
+        
     lifecycleCallbacks: {  }

@@ -46,30 +46,13 @@ class DefaultController extends Controller {
     public function ApiDataAction() {
         $url = "http://www.bitcoinrates.in/getdata.php";
         $ch = curl_init($url);
-        //  $ch = curl_init('https://sendgrid.com/api/invalidemails.get.json?api_user=10times&api_key=10T75@mailer&date=1');
-
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
         curl_setopt($ch, CURLOPT_POSTFIELDS, true);
         $response = curl_exec($ch);
         $response = json_decode($response, true);
         //  Initiate curl
-//        $ch = curl_init();
-//        // Disable SSL verification
-//        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//        // Will return the response, if false it print the response
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//        // Set the url
-//        curl_setopt($ch, CURLOPT_URL, $url);
-//        // Execute
-//        $result = curl_exec($ch);
-//        // Closing
-//        curl_close($ch);
-//
-//        // Will dump a beauty json :3
-//        //var_dump(json_decode($result, true));
-//        // $result = file_get_contents($url);
-//        $data = json_decode($result, true);
+
         $json = json_encode($response);
 
         print_r($json);
@@ -113,6 +96,7 @@ class DefaultController extends Controller {
                     $alert_tasks->setBuyMax($postData['acmebundle_bitcoinbundle']['buy_max']);
                     $alert_tasks->setSellMin($postData['acmebundle_bitcoinbundle']['sell_min']);
                     $alert_tasks->setSellMax($postData['acmebundle_bitcoinbundle']['sell_max']);
+                    $alert_tasks->setBitcoinRates($postData['acmebundle_bitcoinbundle']['bitcoin']);
                     $alert_tasks->setStatus('1');
                     $alert_tasks->setStartDate($dates);
                     $alert_tasks->setEndDate($dates);
@@ -137,29 +121,44 @@ class DefaultController extends Controller {
     }
 
     public function ListUsersAction() {
-        return $this->render('AcmeBitcoinBundle:Datatable:list.html.twig');
-    }
-
-    public function ListUsersDataAction() {
         $result = $this->getDoctrine()->getManager();
         $person_data = $result->createQueryBuilder()
-                ->select('u.id,u.email, u.phone_number,u.buy_min,u.buy_max,u.sell_min,u.sell_max,u.status,u.start_date,u.end_date')
+                ->select('u.id,u.email, u.phone_number,u.buy_min,u.buy_max,u.sell_min,u.sell_max,u.status,u.start_date,u.end_date,u.bitcoin_rates')
                 ->from('AcmeBitcoinBundle:AlertData', 'u')
                 ->orderBy('u.id', 'asc')
         ;
         //$sql=$results->getQuery();
         //echo   $sql->getSql();
         $data = $person_data->getQuery()->getResult();
-        
+        $json_data = json_encode($data);
+        print_r($json_data);
+        die;
+    }
+
+    public function ListUsersDataAction() {
+        $result = $this->getDoctrine()->getManager();
+        $person_data = $result->createQueryBuilder()
+                ->select('u.id,u.email, u.phone_number,u.buy_min,u.buy_max,u.sell_min,u.sell_max,u.status,u.start_date,u.end_date,u.bitcoin_rates')
+                ->from('AcmeBitcoinBundle:AlertData', 'u')
+                ->orderBy('u.id', 'asc')
+        ;
+        //$sql=$results->getQuery();
+        //echo   $sql->getSql();
+        $data = $person_data->getQuery()->getResult();
+
         $json = '[';
         $first = 0;
         foreach ($data as $v) {
-          
+            $bitcoin = 'Sell';
+            if ($v['bitcoin_rates'] == 1) {
+                $bitcoin = 'Buy';
+            }
 //            $start_date=
 //                    $end_date=
             if ($first++)
                 $json .= ',';
-            
+
+
             $json .= '["' . $v['id'] . '",
         "' . $v['email'] . '",
        
@@ -170,7 +169,8 @@ class DefaultController extends Controller {
                 "' . $v['sell_max'] . '",
             "' . $v['status'] . '",
                 "' . $v['start_date']->format('d-M-Y') . '",
-            "' . $v['end_date']->format('d-M-Y'). '"]';
+            "' . $v['end_date']->format('d-M-Y') . '",
+                    "' . $bitcoin . '"]';
         }
         $json .= ']';
 //        $response = json_decode($json, true);
@@ -180,10 +180,29 @@ class DefaultController extends Controller {
                     'json_data' => $json
         ));
     }
-   
+
+    public function SendSmsAction() {
+        $data = file_get_contents('http://localhost/afeeftest-master/web/app_dev.php/users-list');
+        $json_decode = json_decode($data, true);
+        $message_buy = 'Buy Alert
+                       Buy Rate Touched : bit coin rates visit: www.buybtc.in to check more!';
+        $message_sell = 'Sell Alert
+                        Sell Rate Touched : bit coin rates visit: www.buybtc.in to check more!';
 
 
 
+        foreach ($json_decode as $key => $value) {
+            $phone_number = $value['phone_number'];
+            try {
+                file_get_contents('http://103.16.101.52:8080/sendsms/bulksms?username=4567-capaz&password=Kota0141&type=0&dlr=1&destination=' . $value['phone_number'] . '&source=buybtc&message=test');
+            } catch (\Exception $e) {
 
+                $message = $e->getMessage();
+                print_r($message);
+                die;
+            }
+        }
+        die("message sent");
+    }
 
 }

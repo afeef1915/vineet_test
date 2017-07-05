@@ -59,7 +59,10 @@ class AlertData
      */
     private $end_date;
 
-
+     /**
+     * @var string
+     */
+    private $bitcoin_rates;
     /**
      * Get id
      *
@@ -276,4 +279,18 @@ class AlertData
     {
         return $this->end_date;
     }
+    
+     public function setBitcoinRates($bitcoin_rates)
+    {
+        $this->bitcoin_rates = $bitcoin_rates;
+
+        return $this;
+    }
+
+
+    public function getBitcoinRates()
+    {
+        return $this->bitcoin_rates;
+    }
+
 }

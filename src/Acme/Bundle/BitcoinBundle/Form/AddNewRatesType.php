@@ -40,9 +40,14 @@ class AddNewRatesType extends AbstractType {
                     'label' => 'Sell Max',
                     'required' => true,
                 ))
-                 ->add('sell_max', 'text', array(
-                    'label' => 'Sell Max',
-                    'required' => true,
+                ->add('bitcoin', 'choice', array(
+                    'label' => 'BitCoin Buy/Sell',
+                    'required' => false,
+                    'choices' => array(
+                        '1' => "Buy",
+                        '0' => "Sell",
+                    ),
+                        //'mapped' => false,
                 ))
                 
                 ->add('save', 'submit')
