@@ -1,0 +1,37 @@
+acme_bitcoin_homepage:
+    path:     /
+    defaults: { _controller: AcmeBitcoinBundle:Default:index }
+acme_bitcoin_datatable:
+    path:     /bitcoin-datatable
+    defaults: { _controller: AcmeBitcoinBundle:Default:datatable }
+acme_bitcoin_data_api:
+    path:     /api-data
+    defaults: { _controller: AcmeBitcoinBundle:Default:ApiData }
+acme_bitcoin_alert:
+    path:     /alert
+    defaults: { _controller: AcmeBitcoinBundle:Default:Alert }
+acme_bitcoin_manage_alert:
+    path:     /maange-alert
+    defaults: { _controller: AcmeBitcoinBundle:Default:MangeAlert }
+acme_bitcoin_form_data:
+    path:     /registration-alert
+    defaults: { _controller: AcmeBitcoinBundle:Default:FormData }
+acme_bitcoin_form_update:
+    path:     /registration-update
+    defaults: { _controller: AcmeBitcoinBundle:Default:AlertCreate }
+acme_bitcoin_list_data:
+    path:    /users-list
+    defaults: { _controller: AcmeBitcoinBundle:Default:ListUsers }
+acme_bitcoin_list_data_all:
+    path:    /users-list-data
+    defaults: { _controller: AcmeBitcoinBundle:Default:ListUsersData }
+acme_bitcoin_localbitcoin_rates_buy:
+    path:    /bitcoin-rates-buy
+    defaults: { _controller: AcmeBitcoinBundle:BitCoinApi:LocalBitcoinBuy }
+acme_bitcoin_localbitcoin_rates_sell:
+    path:    /bitcoin-rates-sell
+    defaults: { _controller: AcmeBitcoinBundle:BitCoinApi:LocalBitcoinSell }
+acme_bitcoin_coinsecure_sell:
+    path:    /coinsecure-sell
+    defaults: { _controller: AcmeBitcoinBundle:BitCoinApi:CoinsecureSell }
+    

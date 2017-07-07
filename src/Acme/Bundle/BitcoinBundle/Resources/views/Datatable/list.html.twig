@@ -1,0 +1,27 @@
+{% include 'base.html.twig' %} 
+<table id="example" class="table"> <thead> </thead> <tbody> </tbody> </table>
+{% include 'AcmeBitcoinBundle:Bitcoin:bitcoinfooter.html.twig' %}
+<table id="example" class="table">
+
+</table>
+  <script>
+
+$(document).ready(function() {
+    $('#example').dataTable( {
+        "data": {{ json_data|raw }},
+        "columns": [
+            { "title": "Id" },
+            { "title": "Email" },
+            { "title": "Phone Number" },
+            { "title": "Buy Min" },
+            { "title": "Buy Max" },
+            { "title": "Sell Min" },
+            { "title": "Sell Max" },
+            { "title": "Status" },
+           { "title": "Start Date" },
+           { "title": "End Date" }
+         
+        ]
+    } );   
+} );
+  </script>

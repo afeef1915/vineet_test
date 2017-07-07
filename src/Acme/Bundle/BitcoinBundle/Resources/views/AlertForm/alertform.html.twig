@@ -1,0 +1,138 @@
+
+{% include 'base.html.twig' %} 
+<li><button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Alerts
+    </button>
+</li>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Alerts</h4>
+    <div class="alert alert-danger" id="errmsg" style="display:none;">
+  <strong>Message!</strong> Please, enter a integer number
+</div>
+    
+    <div class="alert alert-success" style="display:none;" id="success" >
+  <strong>Success!</strong> Data Saved succesfully
+</div>
+
+</div>
+<div class="modal-body">
+<div class="container">
+{{form_start(form, { 'attr' : { 'id': 'createnew' } })}}
+<!-- {{ form_start(form) }} -->
+{{ form_errors(form) }}
+
+<div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-8">
+      {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+        
+      </div>
+    </div>
+
+{{ form_row(form.phone_number) }}
+{{ form_row(form.buy_min) }}
+{{ form_row(form.buy_max) }}
+{{ form_row(form.sell_min) }}
+{{ form_row(form.sell_max) }}
+
+
+
+</div>
+</div>
+<div class="modal-footer">
+    {{ form_row(form.save, { 'label': 'Submit me' }) }}
+   
+{{ form_end(form) }}
+
+
+</div>
+</div>
+</div>
+</div>    
+
+
+<script>
+$(document).ready(function () {
+    $("#createnew").validate({
+        rules: {
+            "acmebundle_bitcoinbundle[phone_number]": {
+                required: true,
+                minlength: 10
+            },
+            
+            "email": {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+          
+            
+            "email": {
+                required: "Please, enter an email",
+                email: "Email is invalid"
+            }
+        },
+        submitHandler: function (form) { // for demo
+			
+			$("#success").show();
+			 // for demo
+			 form.submit();
+			
+		}
+			//return false; // for demo
+			//$("#success").show();
+			//}
+
+    });
+
+    $("#acmebundle_bitcoinbundle_phone_number").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").show();
+               return false;
+    }
+   });
+     $("#acmebundle_bitcoinbundle_buy_min").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").show();
+               return false;
+    }
+   });
+     $("#acmebundle_bitcoinbundle_buy_max").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").show();
+               return false;
+    }
+   });
+     $("#acmebundle_bitcoinbundle_sell_min").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").show();
+               return false;
+    }
+   });
+     $("#acmebundle_bitcoinbundle_sell_max").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").show();
+               return false;
+    }
+   });
+
+           
+});
+</script>

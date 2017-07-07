@@ -1,0 +1,105 @@
+table tr td:last-child {
+    white-space: nowrap;
+    width: 1px;
+}
+
+.logo
+{
+    display: inline !important;
+    height: 40px;
+    padding-right: 5px;
+    margin-top: -15px;
+}
+.navbar-brand
+{
+    padding: 5px 15px;
+}
+.navbar-brand h2
+{
+    display: inline-block;
+    margin-top: 5px;
+}
+.social
+{
+    padding:10px;    
+    height: 40px;
+
+}
+.modal-dialog
+{
+    margin-top: 200px;
+}
+.panel-info > .panel-heading {
+    color: #ffffff;
+    background-color: #f7931a;
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.panel-title {
+    font-weight: bold;
+}
+
+#chat-form
+{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    padding:0;
+}
+
+#chat-body
+{
+    display:none;
+}
+
+#chatpanel
+{
+    margin-bottom: 0px;
+}
+
+#chatdiv li
+{
+    width: 100%;
+}
+
+.navbar
+{
+    padding: 0;
+    margin-bottom: 0px;
+}
+body {
+    padding-top: 0px;
+}
+#chat-heading 
+{ 
+    cursor: pointer; 
+}
+.chatinputdiv
+{
+    margin-bottom: 0;
+}
+#chatdiv li
+{
+    margin-bottom: 0px;
+}
+.whitetext
+{
+    color:#fff;
+}
+#chatdiv
+{
+    padding-bottom: 10px;
+}
+#chat-body
+{
+    padding-top:10px;
+}
+body
+{
+    min-width: 728px;
+}
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}

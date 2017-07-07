@@ -1,0 +1,227 @@
+
+{% include 'base.html.twig' %} 
+{% include 'AcmeBitcoinBundle:Bitcoin:bitcoinheader.html.twig' %}
+<div class="bannerdiv">
+{#    <center><a href="https://www.unocoin.com/coupons?couponcode=RATES200&utm_source=bitcoinrates.in&utm_medium=banner&utm_campaign=netki" target="_blank">
+
+    <img src="{{ asset ('images/alert_banner.gif') }}" class="img-responsive" alt="banner"></a>    </center>#}
+</div>
+<br/><br/>
+<div class="panel panel-default ">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Get Email alerts</h3>
+                </div>
+                <div class="panel-body content">
+                                       
+                                        <div class="text-danger text-center height300" id="error">
+                                        Please login to continue</div>
+                </div>
+                <div class="panel-body content">
+                                            <form class="form-horizontal" method="POST" onsubmit="return validate();">
+                            <fieldset>                            
+                                <div class="form-group alerttype">
+                                    <label class="col-lg-2 control-label">Alert Type</label>
+                                    <div class="col-lg-10">
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input class="typeradio" type="radio" name="optionsRadios" id="optionsRadios1" value="buypricefees">
+                                                Buy Price with fees
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input class="typeradio" type="radio" name="optionsRadios" id="optionsRadios2" value="buyprice">
+                                                Buy Price without fees
+                                            </label>
+                                        </div><br>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input class="typeradio" type="radio" name="optionsRadios" id="optionsRadios3" value="sellpricefees">
+                                                Sell Price with fees
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input class="typeradio" type="radio" name="optionsRadios" id="optionsRadios4" value="sellprice">
+                                                Sell Price without fees
+                                            </label>
+                                        </div><br>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input class="typeradio" type="radio" name="optionsRadios" id="optionsRadios5" value="arbitragewithfees">
+                                                Arbitrage with fees
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-inline ">
+                                            <label>
+                                                <input class="typeradio" type="radio" name="optionsRadios" id="optionsRadios6" value="arbitragewithoutfees">
+                                                Arbitrage without fees
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group hideinitially buyclass">
+                                    <label for="buyRate" class="col-lg-2 control-label">Buy Rate</label>
+                                    <div class="col-lg-10">
+                                        <input type="number" step="0.01" class="form-control" id="buyRate" name="buyRate" placeholder="Buy Rate is below (in Rs.)">
+                                    </div>
+                                </div>
+                                <div class="form-group hideinitially sellclass">
+                                    <label for="sellRate" class="col-lg-2 control-label">Sell Rate</label>
+                                    <div class="col-lg-10">
+                                        <input type="number" step="0.01" class="form-control" id="sellRate" name="sellRate" placeholder="Sell Rate is above (in Rs.)">
+                                    </div>
+                                </div>
+                                <div class="form-group hideinitially arbitrageclass">
+                                    <label for="arbitragePercent" class="col-lg-2 control-label">Arbitrage Percentage</label>
+                                    <div class="col-lg-10">
+                                        <input type="number" step="0.01" class="form-control" id="arbitragePercent" name="arbitragePercent" placeholder="Arbitrage Percentage is above">
+                                    </div>
+                                </div>
+
+                                <div class="form-group hideinitially exchanges">
+                                    <label class="col-lg-2 control-label">Exchanges to Consider</label>
+                                    <div class="col-lg-10">
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="1">
+                                                Coinsecure                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="2">
+                                                Localbitcoins                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="3">
+                                                Unocoin                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="4">
+                                                Zebpay                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="10">
+                                                Paxful                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="7">
+                                                Bitxoxo                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="9">
+                                                Bitlio                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="11">
+                                                Belfrics                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="5">
+                                                Pocketbits                                            </label>
+                                        </div>
+                                                                                <div class="checkbox checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" name="optionsExchanges[]" value="6">
+                                                LocalBitcoins-NB                                            </label>
+                                        </div>
+                                                                                
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                                        <div class="text-danger text-center " id="error"></div>
+                </div>
+            </div>
+            <div class="text-success text-center " ></div>
+            <br/><br/>
+<script>
+ $('.typeradio').click(function () {
+                $('.hideinitially').hide();
+                if ($(this).val() == "buyprice" || $(this).val() == "buypricefees")
+                {
+                    $('#buyRate').val("");
+                    $('.buyclass').show();
+                }
+                if ($(this).val() == "sellprice" || $(this).val() == "sellpricefees")
+                {
+                    $('#sellRate').val("");
+                    $('.sellclass').show();
+                }
+                if ($(this).val() == "arbitragewithfees")
+                {
+                    $('#arbitragePercent').val("");
+                    $('.arbitrageclass').show();
+                }
+                if ($(this).val() == "arbitragewithoutfees")
+                {
+                    $('#arbitragePercent').val("");
+                    $('.arbitrageclass').show();
+                }
+                $('.exchanges').show();
+            });
+
+            function validate()
+            {
+                if ($('#inputEmail').val() == "")
+                {
+                    $('#error').text("Error: Please enter Email Id");
+                    return false;
+                }
+                if ($(".alerttype input[type=radio]:checked").length > 0) {
+                    var type = $(".alerttype input[type=radio]:checked");
+                    if (type.val() == "buyprice" || type.val() == "buypricefees")
+                    {
+                        if ($('#buyRate').val() == "")
+                        {
+                            $('#error').text("Error: Please enter Buy Rate");
+                            return false;
+                        }
+                    }
+                    if (type.val() == "sellprice" || type.val() == "sellpricefees")
+                    {
+                        if ($('#sellRate').val() == "")
+                        {
+                            $('#error').text("Error: Please enter Sell Rate");
+                            return false;
+                        }
+                    }
+                    if (type.val() == "arbitragewithfees" || type.val() == "arbitragewithoutfees")
+                    {
+                        if ($('#arbitragePercent').val() == "")
+                        {
+                            $('#error').text("Error: Please enter Arbitrage Percentage");
+                            return false;
+                        }
+                    }
+
+                    if ($(".exchanges input[type=checkbox]:checked").length == 0)
+                    {
+                        $('#error').text("Error: Please select atleast one Exchange");
+                        return false;
+                    }
+
+                    return true;
+                } else
+                {
+                    $('#error').text("Error: Please select Alert Type");
+                    return false;
+                }
+            }
+
+</script>
+{% include 'AcmeBitcoinBundle:Bitcoin:bitcoinfooter.html.twig' %} 
